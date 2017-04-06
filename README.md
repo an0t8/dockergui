@@ -3,6 +3,9 @@
 ## Description:
 dockergui is a base image based of phusion's base image version 0.9.16 with ssh disabled.
   
+This image is based on Carlos Hernandez's linuxserver/dockergui x11rdp1.3 branch (https://github.com/linuxserver/dockergui/tree/x11rdp1.3) with guacamole/guacd/tomcat 7 removed.  It provides a base image for headless GUI apps
+that can expose an RDP port for a connection.  This can be used instead of the linuxserver/dockergui container if you have a centralized Guacamole service running so that the overhead of guac/tomcat isn't duplicated in each container.
+
  
 This Docker image makes it possible to use any X application  on a headless server through a modern web browser such as chrome. The x11rdp branch using X11rdp to 
 run its virtual X server, while the Xvnc using ofcourse Xvnc for it's virtual X server. The x11rdp branch is experimental and sometimes has drawing issues. Both branches
