@@ -1,6 +1,6 @@
 # dockergui
 FROM phusion/baseimage:0.9.17
-MAINTAINER Carlos Hernandez <carlos@techbyte.ca>
+MAINTAINER An0t8
 
 #########################################
 ##        ENVIRONMENTAL CONFIG         ##

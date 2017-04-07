@@ -252,16 +252,6 @@ exec 2>&1
 exec env DISPLAY=:1 HOME=/nobody /sbin/setuser nobody  /usr/bin/openbox-session
 EOT
 
-cat <<'EOT' > /etc/guacamole/noauth-config.xml
-<configs>
-    <config name="GUI_APPLICATION" protocol="rdp">
-        <param name="hostname" value="127.0.0.1" />
-        <param name="port" value="3389" />
-        <param name="color-depth" value="16" />
-    </config>
-</configs>
-EOT
-
 # Openbox User nobody autostart
 cat <<'EOT' > /nobody/.config/openbox/autostart
 # Programs that will run after Openbox has started
