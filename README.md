@@ -1,5 +1,9 @@
 #Docker dockergui
 
+This version of dockergui has been forked from linuxserver/dockergui.
+The primary change is that guacamole/guacd have been removed.
+This container should be used in place of the linuxserver one if you intend to have a guacamole/guacd in a seperate container or other centralized location for efficiency.
+
 ## Description:
 dockergui is a base image based of phusion's base image version 0.9.16 with ssh disabled.
   
@@ -78,7 +82,7 @@ This environment variable is used to set the [TimeZone] of the container.
 ## Build from docker file (Info only, not required.):
 
 ```
-git clone --depth=1 https://github.com/hurricanehernandez/dockergui.git 
+git clone --depth=1 https://github.com/an0t8/dockergui.git
 cd tmm
 docker build --rm=true -t dockergui . 
 ```
