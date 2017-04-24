@@ -1,7 +1,8 @@
 #Docker dockergui
 
 This version of dockergui has been forked from linuxserver/dockergui.
-The primary change is that guacamole/guacd have been removed.
+The primary change is that guacamole/guacd have been removed.  
+This branch has been named noguac_x11rdp1.3.
 This container should be used in place of the linuxserver one if you intend to have a guacamole/guacd in a seperate container or other centralized location for efficiency.
 
 ## Description:
