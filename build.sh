@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t dockergui --rm=true .
+docker build -t local/dockergui --rm=true .

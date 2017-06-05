@@ -6,12 +6,12 @@
 
 # Configure user nobody to match unRAID's settings
 export DEBIAN_FRONTEND="noninteractive"
-usermod -u 99 nobody
-usermod -g 100 nobody
-usermod -m -d /nobody nobody
-usermod -s /bin/bash nobody
-usermod -a -G adm,sudo nobody
-echo "nobody:PASSWD" | chpasswd
+usermod -u 99 ${MYUSER}
+usermod -g 100 ${MYGROUP}
+usermod -m -d /${MYUSER} ${MYUSER}
+usermod -s /bin/bash ${MYUSER}
+usermod -a -G adm,sudo ${MYUSER}
+echo "${MYUSER}:${MYPASSWD}" | chpasswd
 
 # Disable SSH
 rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
@@ -21,9 +21,9 @@ rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 #########################################
 
 # Repositories
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main universe restricted' > /etc/apt/sources.list
-echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main universe restricted' >> /etc/apt/sources.list
-echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /etc/apt/sources.list
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial main universe restricted' > /etc/apt/sources.list
+echo 'deb mirror://mirrors.ubuntu.com/mirrors.txt xenial-updates main universe restricted' >> /etc/apt/sources.list
+echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main' >> /etc/apt/sources.list
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 
 # Install Dependencies
@@ -58,9 +58,9 @@ dpkg -i /tmp/x11rdp/xrdp_0.9.0+devel_amd64.deb
 #########################################
 
 # User directory
-mkdir /nobody
-mkdir -p /nobody/.config/openbox
-mkdir /nobody/.cache
+mkdir /${MYUSER}
+mkdir -p /${MYUSER}/.config/openbox
+mkdir /${MYUSER}/.cache
 
 # config
 cat <<'EOT' > /etc/my_init.d/00_config.sh
@@ -78,11 +78,11 @@ cat <<'EOT' > /etc/my_init.d/01_user_config.sh
 USERID=${USER_ID:-99}
 GROUPID=${GROUP_ID:-100}
 groupmod -g $GROUPID users
-usermod -u $USERID nobody
-usermod -g $GROUPID nobody
-usermod -d /nobody nobody
-usermod -a -G adm,sudo,fuse nobody
-chown -R nobody:users /nobody/ 
+usermod -u $USERID ${MYUSER}
+usermod -g $GROUPID ${MYGROUP}
+usermod -d /${MYUSER} ${MYUSER}
+usermod -a -G adm,sudo,fuse ${MYUSER}
+chown -R ${MYUSER}:users /${MYUSER}/ 
 EOT
 
 # app config
